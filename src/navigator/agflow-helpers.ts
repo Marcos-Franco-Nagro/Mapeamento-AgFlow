@@ -4,18 +4,21 @@
 import type { Page } from 'playwright';
 import { expect } from '@playwright/test';
 
-// O botão correto é sempre data-step-variant="info" (próxima fase normal).
-// NUNCA clicar em success (aprovado direto) ou danger (reprovado direto).
+// Fases com múltiplas opções usam data-step-variant="info" para o caminho normal.
+// Fases terminais (ex: fase 5) só têm "success" e "danger" — busca pelo label em qualquer variant.
 export async function advanceToNextPhase(page: Page, expectedLabel: string): Promise<boolean> {
   await page.locator('[data-testid="moveStep"]:not([disabled])').click();
   await expect(page.getByRole('heading', { name: 'Avançar etapas' })).toBeVisible({ timeout: 8000 });
 
-  const targetButton = page.locator('[data-step-variant="info"]');
-  const buttonText = await targetButton.textContent();
-  console.log(`    Avançando para: "${buttonText?.trim()}"`);
+  console.log(`    Avançando para: "${expectedLabel}"`);
 
-  // Salvaguarda: confirma o texto antes de clicar
-  await expect(targetButton).toContainText(expectedLabel);
+  // Tenta primeiro o caminho normal (info); fases terminais só têm success/danger
+  let targetButton = page.locator('[data-step-variant="info"]').filter({ hasText: expectedLabel });
+  if ((await targetButton.count()) === 0) {
+    targetButton = page.locator('[data-step-variant]').filter({ hasText: expectedLabel });
+  }
+
+  await expect(targetButton).toBeVisible({ timeout: 5000 });
   await targetButton.click();
 
   try {
@@ -73,12 +76,30 @@ export async function selectDropdown(
   await expect(combobox).toHaveAttribute('aria-expanded', 'false');
 }
 
+export async function fillTextareaField(
+  page: Page,
+  dataCy: string,
+  value: string,
+): Promise<void> {
+  const textarea = page.locator(`[data-cy="${dataCy}"] textarea:not([aria-hidden="true"])`);
+  await expect(textarea).toBeVisible();
+  await textarea.click({ clickCount: 3 });
+  await textarea.pressSequentially(value);
+  await textarea.blur();
+}
+
 export async function isFieldFilled(page: Page, dataCy: string): Promise<boolean> {
   // Dropdowns MUI: o input[aria-hidden] guarda o valor real mesmo quando pré-populado do DB.
   // Não usar aria-invalid — começa como "true" em campos já salvos até o usuário interagir.
   const hiddenInput = page.locator(`[data-cy="${dataCy}"] input[aria-hidden="true"]`);
   if ((await hiddenInput.count()) > 0) {
     const value = await hiddenInput.inputValue();
+    return value !== '';
+  }
+  // Textareas (MUI multiline TextField — exclui o aria-hidden usado internamente)
+  const textarea = page.locator(`[data-cy="${dataCy}"] textarea:not([aria-hidden="true"])`);
+  if ((await textarea.count()) > 0) {
+    const value = await textarea.inputValue();
     return value !== '';
   }
   // Inputs numéricos

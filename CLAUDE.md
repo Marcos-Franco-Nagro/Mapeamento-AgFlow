@@ -181,27 +181,41 @@ agflow-qa-mapper/
 
 **Cards expiram** — quando um card avança de fase ou é deletado, o fixture precisa ser atualizado com um novo card ID válido naquela fase. Ocorreu durante esta sessão com fases 2 e 3.
 
-### Fase 2+3b — Scripts de interação ✅ PARCIALMENTE CONCLUÍDA (08/05/2026)
+### Fase 2+3b — Scripts de interação ✅ CONCLUÍDA (11/05/2026)
 
-Scripts implementados e rodados:
-- `npm run navigate:activities:solicitacoes` (fase 1) — preenche 3 campos de upload ✅
-- `npm run navigate:parecer` (fase 4) — preenche parecer de crédito ✅
+Todos os scripts de interação das 7 fases implementados e rodados com sucesso.
 
-**Pendente para próxima sessão:**
-- `npm run navigate:activities:analise` (fase 4) — preenche 10 campos das atividades
-- `npm run navigate:advance:solicitacoes` (fase 1) — avança para Validação Documental
-- `npm run navigate:advance:analise` (fase 4) — avança para Alçadas de Aprovação
+**Scripts por fase:**
+
+| Fase | Atividades | Ação especial | Avanço |
+|------|-----------|--------------|--------|
+| 1 — Solicitações Recebidas | `navigate:activities:solicitacoes` | — | `navigate:advance:solicitacoes` |
+| 2 — Validação Documental | `navigate:activities:validacao` | — | `navigate:advance:validacao` |
+| 3 — Pendência Documental | `navigate:activities:pendencia` | — | `navigate:advance:pendencia` |
+| 4 — Análise de Crédito | `navigate:activities:analise` | `navigate:parecer` | `navigate:advance:analise` |
+| 5 — Alçadas de Aprovação | `navigate:activities:alcadas` | `navigate:alcada` | `navigate:advance:alcadas` |
+| 6 — Crédito Aprovado | — | — | `navigate:advance:aprovado` |
+| 7 — Crédito Reprovado | — | — | — (fase final) |
 
 **Regra de ordem dos scripts por fase (IMPORTANTE):**
 ```
 1. navigate:activities:{fase}   — preenche campos (sem avançar)
 2. navigate:parecer             — preenche parecer (sem avançar) [apenas fase 4]
-3. navigate:advance:{fase}      — avança para próxima fase (SEMPRE POR ÚLTIMO)
+3. navigate:alcada              — realiza aprovação de alçada (sem avançar) [apenas fase 5]
+4. navigate:advance:{fase}      — avança para próxima fase (SEMPRE POR ÚLTIMO)
 ```
 
 **Motivo:** scripts que avançam de fase movem o card e impedem os scripts seguintes de encontrá-lo na fase original.
 
-### Fase 4 — Integração Obsidian + MCP ⏳ AGUARDANDO FASE 2+3b
+**Quirks descobertos durante implementação:**
+
+- **data-cy com UUID:** alguns campos de upload têm UUID no atributo `data-cy` (ex: `input-documentos_pendentes_enviados_pelo_ctv_<uuid>`). Usar `^=` (starts-with) em vez de `=` (exact) e inspecionar o DOM antes de assumir o nome pelo label.
+- **data-step-variant terminal:** fases 5 e 6 só têm botões `success`/`danger` no modal de avanço (sem `info`). O `advanceToNextPhase` já lida com isso: tenta `info` primeiro, cai para qualquer variant se não encontrar.
+- **advance do Server Action:** o avanço de etapa usa um Next.js Server Action (`POST .../summary/stages` com `text/x-component`) além do `PATCH` direto à API. Ambos aparecem nos endpoints capturados.
+- **waitForResponse no advance:** o `advance-index.ts` usa `page.waitForResponse` para garantir a captura do PATCH antes de ler o snapshot final.
+- **Sessão expira rapidamente:** o token do AgFlow tem TTL curto. Rodar `npm run login` imediatamente antes de cada script de interação.
+
+### Fase 4 — Integração Obsidian + MCP ⏳ PRÓXIMA
 - Abrir `./vault` no Obsidian, verificar grafo e navegação
 - Configurar `mcp-obsidian` no cliente Claude:
   ```json

@@ -5,7 +5,7 @@ import fs from 'fs/promises';
 import { setupNetworkCapture, type CapturedRequest } from '../crawler/extractors/network.js';
 import { AuthExpiredError } from '../crawler/visit.js';
 import type { CardFixture } from '../fixtures/cards.js';
-import { PHASE1_FIELDS, PHASE4_FIELDS, fillActivityFields, type ActivityFieldDef } from './activity-fields.js';
+import { PHASE1_FIELDS, PHASE2_FIELDS, PHASE3_FIELDS, PHASE4_FIELDS, PHASE5_FIELDS, fillActivityFields, type ActivityFieldDef } from './activity-fields.js';
 import { advanceToNextPhase } from './agflow-helpers.js';
 
 const NAV_TIMEOUT = parseInt(process.env.NAVIGATION_TIMEOUT ?? '30000');
@@ -32,7 +32,10 @@ interface PhaseActivityConfig {
 
 function phaseConfig(phase: number): PhaseActivityConfig {
   if (phase === 1) return { fields: PHASE1_FIELDS };
+  if (phase === 2) return { fields: PHASE2_FIELDS };
+  if (phase === 3) return { fields: PHASE3_FIELDS };
   if (phase === 4) return { fields: PHASE4_FIELDS };
+  if (phase === 5) return { fields: PHASE5_FIELDS };
   throw new Error(`Fase ${phase}: campos de atividades ainda não mapeados`);
 }
 

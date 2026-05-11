@@ -27,7 +27,7 @@ const CLIENT_ID_OVERRIDE = process.env.CLIENT_ID;
 const PHASE_FILTER = process.env.PHASE ? parseInt(process.env.PHASE) : null;
 
 // Fases com campos de atividades implementados
-const IMPLEMENTED_PHASES = new Set([1, 4]);
+const IMPLEMENTED_PHASES = new Set([1, 2, 3, 4, 5]);
 
 async function checkSession(context: BrowserContext): Promise<boolean> {
   const page = await context.newPage();

@@ -25,5 +25,5 @@ export function setupNetworkCapture(page: Page): () => CapturedRequest[] {
     pending.delete(res.url());
   });
 
-  return () => [...captured];
+  return () => [...captured, ...pending.values()];
 }

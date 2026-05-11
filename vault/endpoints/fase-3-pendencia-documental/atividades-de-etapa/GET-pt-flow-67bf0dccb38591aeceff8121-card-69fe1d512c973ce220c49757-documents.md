@@ -1,0 +1,16 @@
+---
+method: GET
+url: "https://agflow.agrisk.dev/pt/flow/67bf0dccb38591aeceff8121/card/69fe1d512c973ce220c49757/documents?documentId=69fe1d522c973ce220c49763&_rsc=172sa"
+status: 200
+tags: [endpoint, agflow]
+---
+
+# GET https://agflow.agrisk.dev/pt/flow/67bf0dccb38591aeceff8121/card/69fe1d512c973ce220c49757/documents?documentId=69fe1d522c973ce220c49763&_rsc=172sa
+
+## Features que consomem este endpoint
+
+- [[fase-3-pendencia-documental-atividades]]
+
+## Observações
+
+-

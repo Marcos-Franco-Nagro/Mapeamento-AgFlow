@@ -21,3 +21,6 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# Obsidian — estado de janela muda a cada sessão, não versionar
+vault/.obsidian/workspace.json

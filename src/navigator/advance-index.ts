@@ -22,7 +22,11 @@ const PHASE_FILTER = process.env.PHASE ? parseInt(process.env.PHASE) : null;
 // Rótulo do botão de avanço por fase
 const ADVANCE_LABELS: Record<number, string> = {
   1: 'Validação documental',
+  2: 'Pendência documental',
+  3: 'Análise de crédito',
   4: 'Alçadas de aprovação',
+  5: 'Crédito aprovado',
+  6: 'Crédito reprovado',
 };
 
 async function checkSession(context: BrowserContext): Promise<boolean> {
@@ -95,9 +99,18 @@ async function main(): Promise<void> {
       await fs.mkdir(endpointsDir, { recursive: true });
       await fs.mkdir(outputDir, { recursive: true });
 
+      // waitForResponse precisa ser registrado ANTES do clique para não perder o evento
+      const patchDone = page.waitForResponse(
+        (res) => res.request().method() === 'PATCH' && res.url().includes(`/cards/${card.cardId}`),
+        { timeout: 15000 },
+      ).catch(() => null);
+
       const snapshotBefore = getRequests();
       const advancedOk = await advanceToNextPhase(page, advanceLabel);
-      await page.waitForTimeout(1000);
+
+      await patchDone; // garante que a resposta do PATCH foi recebida
+      // Aguarda os GETs de refetch que o frontend dispara após o PATCH resolver
+      await page.waitForTimeout(3000);
 
       await page.screenshot({
         path: path.join(advanceDir, `${card.cardId}-avancado.png`),
