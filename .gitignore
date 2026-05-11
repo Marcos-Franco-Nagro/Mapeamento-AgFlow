@@ -1,0 +1,23 @@
+node_modules/
+dist/
+.env
+.env.local
+
+# Credenciais e sessoes — NUNCA commitar
+auth/storageState.json
+auth/*.json
+
+# Output bruto do crawler (opcional manter, ver decisao)
+crawl-output/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

@@ -1,0 +1,16 @@
+---
+method: GET
+url: "https://api.agflow.agrisk.dev/v1/financial-reports/clients/69c18b48bc333a6ce8784a5c/consolidated"
+status: 200
+tags: [endpoint, agflow]
+---
+
+# GET https://api.agflow.agrisk.dev/v1/financial-reports/clients/69c18b48bc333a6ce8784a5c/consolidated
+
+## Features que consomem este endpoint
+
+- [[fase4-credit-analysis-financial-report]]
+
+## Observações
+
+-

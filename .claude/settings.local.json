@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx playwright *)",
+      "Bash(npm run *)",
+      "Bash(CARD_ID=69d3c2f371224485c434c6db npm run navigate:activities)",
+      "Bash(CARD_ID=69f211587693dd79e55e71e5 npm run navigate:activities)",
+      "Bash(CARD_ID=69f211587693dd79e55e71e5 npm run navigate:parecer)",
+      "Bash(CARD_ID=69df86778f28cec20d7d392e npm run navigate:parecer)",
+      "Bash(CARD_ID=69df86778f28cec20d7d392e npm run navigate:activities)",
+      "Bash(CARD_ID=69d79880bfe40a3fcc92a25d npm run navigate:activities)",
+      "Bash(CARD_ID=69d79880bfe40a3fcc92a25d npm run navigate:parecer)",
+      "Read(//c/Users/MarcosFrancoOliveira/Downloads/**)",
+      "Bash(mkdir -p \"C:\\\\Users\\\\MarcosFrancoOliveira\\\\OneDrive - NAGRO CREDITO AGRO\\\\Área de Trabalho\\\\Projetos Claude\\\\agflow-qa-mapper\\\\tests\\\\fixtures\")",
+      "Bash(cp \"C:\\\\Users\\\\MarcosFrancoOliveira\\\\Downloads\\\\Minhas fotos AgRisk\\\\Minha assinatura email.png\" \"C:\\\\Users\\\\MarcosFrancoOliveira\\\\OneDrive - NAGRO CREDITO AGRO\\\\Área de Trabalho\\\\Projetos Claude\\\\agflow-qa-mapper\\\\tests\\\\fixtures\\\\Minha_assinatura_email.png\")",
+      "Bash(npm install *)",
+      "Bash(CARD_ID=69f337f9c913fbf60a580fac npm run navigate:activities:solicitacoes)",
+      "Bash(CARD_ID=69f337f9c913fbf60a580fac CLIENT_ID=68bb359ceecd59426dda141a npm run navigate:activities:solicitacoes)",
+      "Bash(CARD_ID=69f34a07c913fbf60a5835d2 npm run navigate:activities:solicitacoes)",
+      "Bash(CARD_ID=69f3459dc913fbf60a582ea7 npm run navigate:activities:solicitacoes)",
+      "Bash(CARD_ID=69f34ffbc913fbf60a58458c npm run navigate:activities:solicitacoes)",
+      "Bash(npx tsc *)",
+      "Bash(Get-ChildItem vault\\\\endpoints -Recurse -Directory)",
+      "Bash(Select-Object -ExpandProperty FullName)"
+    ]
+  }
+}
