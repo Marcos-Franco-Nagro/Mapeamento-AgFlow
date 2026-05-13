@@ -14,3 +14,27 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `AgRiskController_listCprs`
+
+**Resumo:** Visualizar CPR
+
+**Descrição:** Rota responsável pela visualização do resultado da consulta das Cédula(s) do Produtor Rural.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `clientId` | path | string | ✓ |  |
+
+### Response — List CPRs
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|----------|
+| `nature` | array | ✓ |  |
+| `procedure` | array | ✓ |  |
+| `status` | array | ✓ |  |
+| `items` | array | ✓ |  |

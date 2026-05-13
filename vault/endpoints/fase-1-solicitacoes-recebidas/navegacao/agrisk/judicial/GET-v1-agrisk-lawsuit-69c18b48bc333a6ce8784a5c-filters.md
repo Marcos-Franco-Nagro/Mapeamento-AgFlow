@@ -14,3 +14,24 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `AgRiskController_listLawsuitsFilters`
+
+**Resumo:** Visualizar filtros de processos judiciais
+
+**Descrição:** Rota responsável pela visualização dos filtros de processos judiciais.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `clientId` | path | string | ✓ |  |
+
+### Response — List Lawsuits Filters
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|----------|
+| `filters` | array | ✓ |  |

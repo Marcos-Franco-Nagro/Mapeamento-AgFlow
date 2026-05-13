@@ -14,3 +14,21 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `GroupController_findDebtGroup`
+
+**Resumo:** Visualizar endividamentos
+
+**Descrição:** Rota responsável pela visualização do endividamento no banco central (de forma agrupada).
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `cardId` | path | string | ✓ |  |
+
+### Response — Debt Group
+

@@ -24,6 +24,12 @@
     "navigate:advance:alcadas": "cross-env PHASE=5 tsx src/navigator/advance-index.ts",
     "navigate:advance:aprovado": "cross-env PHASE=6 tsx src/navigator/advance-index.ts",
     "navigate:advance:analise": "cross-env PHASE=4 tsx src/navigator/advance-index.ts",
+    "navigate:radar": "tsx src/navigator/radar-index.ts",
+    "navigate:balanco": "tsx src/navigator/balanco-index.ts",
+    "navigate:balanco:extrair": "cross-env STEP=extrair tsx src/navigator/balanco-index.ts",
+    "navigate:balanco:revisar": "cross-env STEP=revisar tsx src/navigator/balanco-index.ts",
+    "navigate:motor-credito": "tsx src/navigator/motor-credito-index.ts",
+    "enrich:swagger": "tsx src/enricher/swagger-enrich.ts",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {

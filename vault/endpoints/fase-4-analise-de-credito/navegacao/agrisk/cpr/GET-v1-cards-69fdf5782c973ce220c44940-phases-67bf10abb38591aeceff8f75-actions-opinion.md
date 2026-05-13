@@ -14,3 +14,22 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `CardController_findOpinion`
+
+**Resumo:** Visualizar parecer de crédito
+
+**Descrição:** Rota responsável pela visualização do parecer de crédito.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `cardId` | path | string | ✓ |  |
+| `phaseId` | path | string | ✓ |  |
+
+### Response — Card opinion
+

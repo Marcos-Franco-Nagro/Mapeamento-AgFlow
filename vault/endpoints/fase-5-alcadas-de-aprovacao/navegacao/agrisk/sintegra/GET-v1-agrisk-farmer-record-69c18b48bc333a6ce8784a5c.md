@@ -14,3 +14,25 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `AgRiskController_listFarmerRecord`
+
+**Resumo:** Visualizar consulta ao Sintegra
+
+**Descrição:** Rota responsável pela visualização do resultado da consulta ao Sintegra.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `clientId` | path | string | ✓ |  |
+
+### Response — Sintegra
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|----------|
+| `farmerRecords` | object | ✓ |  |
+| `query` | object | ✓ |  |

@@ -14,3 +14,21 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `AgRiskController_listCompliance`
+
+**Resumo:** Visualizar compliance (conformidade)
+
+**Descrição:** Rota responsável pela visualização do resultado da consulta do compliance (ex: CNDs, Ibama, TST e entre outros).
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `clientId` | path | string | ✓ |  |
+
+### Response — List Compliance
+

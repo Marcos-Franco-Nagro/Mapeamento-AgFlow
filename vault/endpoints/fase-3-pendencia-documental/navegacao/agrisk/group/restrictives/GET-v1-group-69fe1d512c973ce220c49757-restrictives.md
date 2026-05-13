@@ -14,3 +14,21 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `GroupController_findRestrictivesGroup`
+
+**Resumo:** Visualizar restritivos
+
+**Descrição:** Rota responsável pela visualização dos restritivos (de forma agrupada).
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `cardId` | path | string | ✓ |  |
+
+### Response — Restrictives Group
+

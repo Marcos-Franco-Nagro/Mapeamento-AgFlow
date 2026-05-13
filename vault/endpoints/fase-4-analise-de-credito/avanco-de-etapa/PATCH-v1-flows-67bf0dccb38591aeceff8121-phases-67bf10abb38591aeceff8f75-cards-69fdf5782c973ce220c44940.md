@@ -14,3 +14,29 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `FlowController_moveCard`
+
+**Resumo:** Atualizar fase de uma oportunidade
+
+**Descrição:** Rota responsável pela atualização da fase de uma oportunidade.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `id` | path | string | ✓ |  |
+| `phaseId` | path | string | ✓ |  |
+| `cardId` | path | string | ✓ |  |
+
+### Request Body
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|----------|
+| `phaseId` | string | ✓ |  |
+
+### Response
+

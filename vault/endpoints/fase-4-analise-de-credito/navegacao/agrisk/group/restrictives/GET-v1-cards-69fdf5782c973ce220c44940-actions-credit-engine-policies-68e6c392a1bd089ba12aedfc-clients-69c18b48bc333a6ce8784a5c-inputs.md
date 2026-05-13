@@ -14,3 +14,23 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `CardController_findInputsCreditEngine`
+
+**Resumo:** Visualizar parâmetros do motor de decisão
+
+**Descrição:** Rota responsável pela visualização dos parâmetros do motor de decisão.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `cardId` | path | string | ✓ |  |
+| `clientId` | path | string | ✓ |  |
+| `policyId` | path | string | ✓ |  |
+
+### Response — Find Credit Engine Inputs
+

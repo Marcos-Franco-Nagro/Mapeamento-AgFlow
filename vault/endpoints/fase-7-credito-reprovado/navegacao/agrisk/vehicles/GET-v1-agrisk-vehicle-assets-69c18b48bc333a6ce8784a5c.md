@@ -14,3 +14,26 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `AgRiskController_listVehicleAssets`
+
+**Resumo:** Visualizar automóveis
+
+**Descrição:** Rota responsável pela visualização do resultado da consulta dos automóveis.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `clientId` | path | string | ✓ |  |
+
+### Response — List Vehicle Assets
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|----------|
+| `items` | array | ✓ |  |
+| `totalValue` | number | ✓ |  |
+| `totalVehicles` | number | ✓ |  |
