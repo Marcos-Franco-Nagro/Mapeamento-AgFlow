@@ -14,3 +14,21 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `GroupController_findCarGroup`
+
+**Resumo:** Visualizar CAR
+
+**Descrição:** Rota responsável pela visualização dos CARs (de forma agrupada).
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `cardId` | path | string | ✓ |  |
+
+### Response — Car Group
+

@@ -14,3 +14,24 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `AgRiskController_listWarehouse`
+
+**Resumo:** Visualizar armazéns
+
+**Descrição:** Rota responsável pela visualização do resultado da consulta de armazéns.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `clientId` | path | string | ✓ |  |
+
+### Response — List Warehouse
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|----------|
+| `items` | array | ✓ |  |

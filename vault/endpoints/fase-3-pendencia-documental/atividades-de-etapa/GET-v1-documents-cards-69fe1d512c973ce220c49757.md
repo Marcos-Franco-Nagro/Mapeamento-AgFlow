@@ -14,3 +14,22 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `DocumentController_findAllCardDocument`
+
+**Resumo:** Listar documentos na oportunidade
+
+**Descrição:** Rota responsável pela listagem dos documentos em uma oportunidade.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `cardId` | path | string | ✓ |  |
+| `fileName` | query | string | ✓ |  |
+
+### Response
+

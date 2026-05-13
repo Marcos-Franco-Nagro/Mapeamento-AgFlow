@@ -14,3 +14,25 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `AgRiskController_listCreditRestrictive`
+
+**Resumo:** Visualizar Restritivos de Créditos
+
+**Descrição:** Rota responsável pela visualização do resultado da consulta nos restritivos de créditos nacional.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `clientId` | path | string | ✓ |  |
+
+### Response — Restritivo Nacional
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|----------|
+| `protests` | object | ✓ |  |
+| `query` | object | ✓ |  |

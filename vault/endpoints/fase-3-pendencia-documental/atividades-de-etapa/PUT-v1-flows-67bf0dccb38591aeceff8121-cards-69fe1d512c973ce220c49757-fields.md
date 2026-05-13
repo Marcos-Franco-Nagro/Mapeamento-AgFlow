@@ -14,3 +14,28 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `FlowController_saveCardFields`
+
+**Resumo:** Atualizar campos de uma oportunidade
+
+**Descrição:** Rota responsável pela atualização dos campos de uma oportunidade.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `id` | path | string | ✓ |  |
+| `cardId` | path | string | ✓ |  |
+
+### Request Body
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|----------|
+| `fields` | array | ✓ |  |
+
+### Response
+

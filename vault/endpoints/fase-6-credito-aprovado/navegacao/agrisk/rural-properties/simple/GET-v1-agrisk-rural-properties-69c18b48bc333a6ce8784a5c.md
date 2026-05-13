@@ -14,3 +14,26 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `AgRiskController_findAllRuralProperties`
+
+**Resumo:** Visualizar imóveis rurais
+
+**Descrição:** Rota responsável pela visualização do resultado da consulta dos imóveis rurais.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `clientId` | path | string | ✓ |  |
+| `offset` | query | number |  |  |
+| `limit` | query | number |  |  |
+
+### Response — List Rural Properties
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|----------|
+| `ruralProperties` | object | ✓ |  |
