@@ -30,6 +30,7 @@
     "navigate:balanco:extrair": "cross-env STEP=extrair tsx src/navigator/balanco-index.ts",
     "navigate:balanco:revisar": "cross-env STEP=revisar tsx src/navigator/balanco-index.ts",
     "navigate:documentos": "tsx src/navigator/documentos-index.ts",
+    "navigate:criar-documento": "tsx src/navigator/criar-documento-index.ts",
     "navigate:motor-credito": "tsx src/navigator/motor-credito-index.ts",
     "enrich:swagger": "tsx src/enricher/swagger-enrich.ts",
     "typecheck": "tsc --noEmit"
