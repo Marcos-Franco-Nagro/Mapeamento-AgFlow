@@ -43,13 +43,17 @@ export async function visitDocumentos(
   const page = await context.newPage();
   const getRequests = setupNetworkCapture(page);
 
-  const screenshotsDir = path.join('vault', 'screenshots', 'modulo-documentos');
+  const ssNav   = path.join('vault', 'screenshots', 'modulo-documentos', 'navegacao-pastas');
+  const ssForma1 = path.join('vault', 'screenshots', 'modulo-documentos', 'forma1-add-doc-diretonapasta');
+  const ssForma2 = path.join('vault', 'screenshots', 'modulo-documentos', 'forma2-novo-documento-anexar');
   const outputDir = path.join('crawl-output', 'modulo-documentos');
 
   const url = `${baseUrl}/${locale}/flow/${flowId}/card/${card.cardId}/documents`;
 
   try {
-    await fs.mkdir(screenshotsDir, { recursive: true });
+    await fs.mkdir(ssNav,    { recursive: true });
+    await fs.mkdir(ssForma1, { recursive: true });
+    await fs.mkdir(ssForma2, { recursive: true });
     await fs.mkdir(outputDir, { recursive: true });
 
     // =========================================================
@@ -64,7 +68,7 @@ export async function visitDocumentos(
     await page.waitForTimeout(500);
 
     const screenshotRaiz = `${card.cardId}-raiz.png`;
-    await page.screenshot({ path: path.join(screenshotsDir, screenshotRaiz), fullPage: true });
+    await page.screenshot({ path: path.join(ssNav, screenshotRaiz), fullPage: true });
 
 
     // --- Navegação nas pastas (capturar GETs de carregamento de conteúdo) ---
@@ -80,7 +84,7 @@ export async function visitDocumentos(
     await page.waitForTimeout(1000);
 
     const screenshotClientePasta = `${card.cardId}-pasta-cliente.png`;
-    await page.screenshot({ path: path.join(screenshotsDir, screenshotClientePasta), fullPage: true });
+    await page.screenshot({ path: path.join(ssNav, screenshotClientePasta), fullPage: true });
 
     // Primeira subpasta dentro do cliente — mesmo seletor de folder card
     const primeiraSubpasta = page.locator('button[data-variant="contained"][data-active="false"]').first();
@@ -91,7 +95,7 @@ export async function visitDocumentos(
     await page.waitForTimeout(1000);
 
     const screenshotSubpasta = `${card.cardId}-subpasta.png`;
-    await page.screenshot({ path: path.join(screenshotsDir, screenshotSubpasta), fullPage: true });
+    await page.screenshot({ path: path.join(ssNav, screenshotSubpasta), fullPage: true });
 
     const requestsNavPastas = getRequests().slice(snapshotAntesNav.length);
 
@@ -108,7 +112,7 @@ export async function visitDocumentos(
     await page.waitForTimeout(800);
 
     const screenshotForm1Popup = `${card.cardId}-form1-popup.png`;
-    await page.screenshot({ path: path.join(screenshotsDir, screenshotForm1Popup), fullPage: true });
+    await page.screenshot({ path: path.join(ssForma1, screenshotForm1Popup), fullPage: true });
 
     // Input de arquivo está no DOM (hidden) — setInputFiles bypassa o file picker nativo
     const fileInput1 = page.locator('input[type="file"][data-testid="file-upload"]').last();
@@ -117,7 +121,7 @@ export async function visitDocumentos(
     await page.waitForTimeout(1500);
 
     const screenshotForm1Upload = `${card.cardId}-form1-arquivo.png`;
-    await page.screenshot({ path: path.join(screenshotsDir, screenshotForm1Upload), fullPage: true });
+    await page.screenshot({ path: path.join(ssForma1, screenshotForm1Upload), fullPage: true });
 
     const concluirForm1 = page.getByRole('button', { name: 'Concluir', exact: true });
     await expect(concluirForm1).toBeEnabled({ timeout: 30000 });
@@ -134,7 +138,7 @@ export async function visitDocumentos(
     await page.waitForTimeout(1500);
 
     const screenshotForm1Final = `${card.cardId}-form1-final.png`;
-    await page.screenshot({ path: path.join(screenshotsDir, screenshotForm1Final), fullPage: true });
+    await page.screenshot({ path: path.join(ssForma1, screenshotForm1Final), fullPage: true });
 
     const requestsForm1Upload = getRequests().slice(snapshotAntesForm1.length);
 
@@ -163,7 +167,7 @@ export async function visitDocumentos(
     await page.waitForTimeout(500);
 
     const screenshotForm2Popup1 = `${card.cardId}-form2-popup1-tipo.png`;
-    await page.screenshot({ path: path.join(screenshotsDir, screenshotForm2Popup1), fullPage: true });
+    await page.screenshot({ path: path.join(ssForma2, screenshotForm2Popup1), fullPage: true });
 
     // Clicar em "Anexar" (adicionar arquivo existente)
     // O texto "Anexar" aparece como label dentro do item de lista — busca pelo container
@@ -174,7 +178,7 @@ export async function visitDocumentos(
     await page.waitForTimeout(800);
 
     const screenshotForm2Popup2 = `${card.cardId}-form2-popup2-upload.png`;
-    await page.screenshot({ path: path.join(screenshotsDir, screenshotForm2Popup2), fullPage: true });
+    await page.screenshot({ path: path.join(ssForma2, screenshotForm2Popup2), fullPage: true });
 
     // Step 1 — Upload do arquivo (mesmo padrão: input hidden no DOM)
     const fileInput2 = page.locator('input[type="file"][data-testid="file-upload"]').last();
@@ -183,7 +187,7 @@ export async function visitDocumentos(
     await page.waitForTimeout(1500);
 
     const screenshotForm2Upload = `${card.cardId}-form2-arquivo.png`;
-    await page.screenshot({ path: path.join(screenshotsDir, screenshotForm2Upload), fullPage: true });
+    await page.screenshot({ path: path.join(ssForma2, screenshotForm2Upload), fullPage: true });
 
     // Step 2 — Seleção de pasta dentro do popup
     // O heading "Selecione a pasta" fica dentro do popup, APÓS os botões de nav do topo.
@@ -204,7 +208,7 @@ export async function visitDocumentos(
     await page.waitForTimeout(600);
 
     const screenshotForm2PastaCliente = `${card.cardId}-form2-pasta-cliente.png`;
-    await page.screenshot({ path: path.join(screenshotsDir, screenshotForm2PastaCliente), fullPage: true });
+    await page.screenshot({ path: path.join(ssForma2, screenshotForm2PastaCliente), fullPage: true });
 
     // Após navegar no picker para o cliente, aparecem as subpastas dele
     // O heading "Selecione a pasta" ainda está visível — reutilizamos como âncora
@@ -217,7 +221,7 @@ export async function visitDocumentos(
     await page.waitForTimeout(600);
 
     const screenshotForm2Subpasta = `${card.cardId}-form2-subpasta.png`;
-    await page.screenshot({ path: path.join(screenshotsDir, screenshotForm2Subpasta), fullPage: true });
+    await page.screenshot({ path: path.join(ssForma2, screenshotForm2Subpasta), fullPage: true });
 
     // Concluir (habilita quando arquivo + pasta estão selecionados)
     const concluirForm2 = page.getByRole('button', { name: 'Concluir', exact: true });
@@ -228,7 +232,7 @@ export async function visitDocumentos(
     await page.waitForTimeout(2000);
 
     const screenshotForm2Final = `${card.cardId}-form2-final.png`;
-    await page.screenshot({ path: path.join(screenshotsDir, screenshotForm2Final), fullPage: true });
+    await page.screenshot({ path: path.join(ssForma2, screenshotForm2Final), fullPage: true });
 
     const requestsForm2Anexar = getRequests().slice(snapshotAntesForm2.length);
 
