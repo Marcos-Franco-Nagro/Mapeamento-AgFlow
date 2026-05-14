@@ -38,8 +38,8 @@ export async function visitCashFlowNovaArea(
   page.on('pageerror', err => console.log(`[pageerror] ${err.message}`));
   const getRequests = setupNetworkCapture(page);
 
-  const screenshotsDir = path.join('vault', 'screenshots', 'modulo-cash-flow', 'nova-area');
-  const outputDir = path.join('crawl-output', 'modulo-cash-flow');
+  const screenshotsDir = path.join('vault', 'screenshots', 'submodulo-cash-flow', 'nova-area');
+  const outputDir = path.join('crawl-output', 'submodulo-cash-flow');
   const url = `${baseUrl}/${locale}/flow/${flowId}/card/${card.cardId}/credit-analysis/cash-flow/consolidated`;
 
   try {

@@ -4,7 +4,7 @@ import path from 'path';
 import fs from 'fs/promises';
 import { fileURLToPath } from 'url';
 import { CARD_FIXTURES, FLOW_ID } from '../fixtures/cards.js';
-import { visitCashFlowNovaArea } from './cashflow-nova-area-visit.js';
+import { visitCashFlowCadastrarProducao } from './cashflow-cadastrar-producao-visit.js';
 import { AuthExpiredError } from '../crawler/visit.js';
 import type { CapturedRequest } from '../crawler/extractors/network.js';
 
@@ -39,7 +39,7 @@ async function saveEndpoints(requests: CapturedRequest[], folder: string): Promi
       try { await fs.access(file); continue; } catch { /* não existe */ }
       await fs.writeFile(
         file,
-        `---\nmethod: ${req.method}\nurl: "${req.url}"\nstatus: ${req.status ?? 'unknown'}\ntags: [endpoint, agflow, cash-flow, nova-area]\n---\n\n# ${req.method} ${req.url}\n\n## Observações\n\n-\n`,
+        `---\nmethod: ${req.method}\nurl: "${req.url}"\nstatus: ${req.status ?? 'unknown'}\ntags: [endpoint, agflow, cash-flow, cadastrar-producao]\n---\n\n# ${req.method} ${req.url}\n\n## Observações\n\n-\n`,
         'utf-8',
       );
     } catch { /* ignorar */ }
@@ -75,14 +75,19 @@ async function main(): Promise<void> {
   let errors = 0;
 
   for (const card of cards) {
-    console.log(`\n💰 Fase ${card.phase} — ${card.phaseName}`);
+    console.log(`\n🌾 Fase ${card.phase} — ${card.phaseName}`);
     console.log(`   Card: ${card.cardId}`);
 
     try {
-      console.log('   Cadastrando nova área no fluxo de caixa...');
-      const result = await visitCashFlowNovaArea(context, card, BASE_URL, LOCALE, FLOW_ID);
-      await saveEndpoints(result.requestsNovaArea, 'nova-area');
-      console.log(`   ✓ ok — ${result.requestsNovaArea.length} endpoint(s)`);
+      console.log('   Cadastrando produção no fluxo de caixa...');
+      const result = await visitCashFlowCadastrarProducao(context, card, BASE_URL, LOCALE, FLOW_ID);
+      await saveEndpoints(result.requestsCadastrarProducao, 'cadastrar-producao');
+      await saveEndpoints(result.requestsProducoes, 'producoes');
+      await saveEndpoints(result.requestsImoveisRurais, 'imoveis-rurais');
+      console.log(
+        `   ✓ ok — ${result.requestsCadastrarProducao.length} endpoint(s) cadastro, ` +
+        `${result.requestsProducoes.length} produções, ${result.requestsImoveisRurais.length} imóveis`,
+      );
       ok++;
     } catch (err) {
       if (err instanceof AuthExpiredError) {

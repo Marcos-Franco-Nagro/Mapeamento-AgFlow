@@ -33,6 +33,7 @@
     "navigate:criar-documento": "tsx src/navigator/criar-documento-index.ts",
     "navigate:motor-credito": "tsx src/navigator/motor-credito-index.ts",
     "navigate:cashflow:nova-area": "tsx src/navigator/cashflow-nova-area-index.ts",
+    "navigate:cashflow:cadastrar-producao": "tsx src/navigator/cashflow-cadastrar-producao-index.ts",
     "enrich:swagger": "tsx src/enricher/swagger-enrich.ts",
     "typecheck": "tsc --noEmit"
   },
