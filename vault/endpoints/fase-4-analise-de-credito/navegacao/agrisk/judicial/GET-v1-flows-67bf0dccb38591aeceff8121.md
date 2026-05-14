@@ -14,3 +14,21 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `FlowController_findFlowById`
+
+**Resumo:** Visualizar fluxo
+
+**Descrição:** Rota responsável pelo visualização dos detalhes de um fluxo.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `id` | path | string | ✓ |  |
+
+### Response
+

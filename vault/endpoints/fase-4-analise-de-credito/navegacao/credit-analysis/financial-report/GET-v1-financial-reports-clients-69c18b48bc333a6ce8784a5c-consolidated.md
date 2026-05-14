@@ -14,3 +14,21 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `FinancialReportController_listConsolidatedReport`
+
+**Resumo:** Listar relatório financeiro consolidado
+
+**Descrição:** Retorna o relatório consolidado e os cards gráficos dos últimos 4 anos do cliente.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `clientId` | path | string | ✓ |  |
+
+### Response
+

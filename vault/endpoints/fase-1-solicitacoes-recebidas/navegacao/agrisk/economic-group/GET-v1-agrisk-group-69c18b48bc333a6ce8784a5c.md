@@ -14,3 +14,25 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `AgRiskController_listGroup`
+
+**Resumo:** Visualizar grupos (econômico e familiar)
+
+**Descrição:** Rota responsável pela visualização do resultado da consulta dos grupos.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `clientId` | path | string | ✓ |  |
+
+### Response — List Group
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|----------|
+| `economic` | object | ✓ |  |
+| `family` | object | ✓ |  |

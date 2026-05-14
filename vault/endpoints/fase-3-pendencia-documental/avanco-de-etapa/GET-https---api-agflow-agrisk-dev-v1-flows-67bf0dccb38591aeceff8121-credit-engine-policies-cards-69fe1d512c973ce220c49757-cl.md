@@ -10,3 +10,23 @@ tags: [endpoint, agflow, avanco-de-etapa]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `FlowController_findAllCreditEngineOrderedPolicies`
+
+**Resumo:** Buscar as politicas de crédito ordenadas de acordo com a execução do card e cliente
+
+**Descrição:** Buscar as politicas de crédito ordenadas de acordo com a execução do card e cliente
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `flowId` | path | string | ✓ |  |
+| `cardId` | path | string | ✓ |  |
+| `clientId` | path | string | ✓ |  |
+
+### Response — Find All Credit Engine Ordered Policies
+

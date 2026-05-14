@@ -14,3 +14,21 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `GroupController_findBasicDataGroup`
+
+**Resumo:** Visualizar dados básicos, e-mail, endereço e telefone
+
+**Descrição:** Rota responsável pela visualização dos dados básicos, e-mails, endereços e telefones (de forma agrupada).
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `cardId` | path | string | ✓ |  |
+
+### Response — Basic Data Group
+

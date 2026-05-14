@@ -10,3 +10,22 @@ tags: [endpoint, agflow, avanco-de-etapa]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `CardController_findCardFieldsByPhase`
+
+**Resumo:** Listar campos
+
+**Descrição:** Rota responsável pela listagem dos campos.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `cardId` | path | string | ✓ |  |
+| `phaseId` | path | string | ✓ |  |
+
+### Response — Find Card Fields By Phase
+

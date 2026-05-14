@@ -14,3 +14,21 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `GroupController_findComplianceGroup`
+
+**Resumo:** Visualizar conformidades
+
+**Descrição:** Rota responsável pela visualização das conformidades (de forma agrupada).
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `cardId` | path | string | ✓ |  |
+
+### Response — Compliance Group
+

@@ -14,3 +14,22 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `FlowController_findByCardId`
+
+**Resumo:** Visualizar oportunidade
+
+**Descrição:** Rota responsável pela visualização de uma oportunidade.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `id` | path | string | ✓ |  |
+| `cardId` | path | string | ✓ |  |
+
+### Response
+

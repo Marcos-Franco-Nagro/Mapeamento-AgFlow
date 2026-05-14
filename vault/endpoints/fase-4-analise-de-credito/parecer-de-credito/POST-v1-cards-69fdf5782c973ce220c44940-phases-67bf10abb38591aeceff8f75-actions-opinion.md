@@ -14,3 +14,31 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `CardController_createOpinion`
+
+**Resumo:** Cadastrar parecer de crédito
+
+**Descrição:** Rota responsável pelo cadastro do parecer de crédito.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `cardId` | path | string | ✓ |  |
+| `phaseId` | path | string | ✓ |  |
+
+### Request Body
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|----------|
+| `status` | string | ✓ |  |
+| `value` | number | ✓ |  |
+| `opinion` | string | ✓ |  |
+| `fields` | array | ✓ |  |
+
+### Response — Opinion created
+

@@ -14,3 +14,18 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `AgRiskController_listAllProducts`
+
+**Resumo:** Listar produtos
+
+**Descrição:** Rota responsável pela listagem dos produtos disponíveis para consultar.
+
+### Response — Produtos
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|----------|
+| `items` | array | ✓ |  |

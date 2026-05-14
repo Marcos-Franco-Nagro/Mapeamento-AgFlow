@@ -14,3 +14,24 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `CardController_findAllHistorys`
+
+**Resumo:** Visualizar histórico
+
+**Descrição:** Rota responsável pela visualização do histórico de atualizações de um card.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `cardId` | path | string | ✓ |  |
+| `offset` | query | number |  |  |
+| `limit` | query | number |  |  |
+| `type` | query | string |  |  |
+
+### Response — History card
+

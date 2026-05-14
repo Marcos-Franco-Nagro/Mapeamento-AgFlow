@@ -14,3 +14,25 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `AgRiskController_listDebts`
+
+**Resumo:** Visualizar endividamento
+
+**Descrição:** Rota responsável pela visualização do resultado da consulta do endividamento.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `clientId` | path | string | ✓ |  |
+
+### Response — List Debts
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|----------|
+| `indicators` | object | ✓ |  |
+| `chart` | object | ✓ |  |

@@ -14,3 +14,45 @@ tags: [endpoint, agflow]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `ClientController_findClientInfos`
+
+**Resumo:** Visualizar cliente
+
+**Descrição:** Rota responsável pela visualização do resultado da consulta dos dados básicos junto com email, endereço e telefone.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `clientId` | path | string | ✓ |  |
+
+### Response — Client Details
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|----------|
+| `id` | string |  |  |
+| `refId` | string |  |  |
+| `companyId` | string | ✓ |  |
+| `taxId` | string | ✓ |  |
+| `kind` | string |  |  |
+| `active` | boolean |  |  |
+| `name` | string |  |  |
+| `gender` | string |  |  |
+| `birthDate` | string |  |  |
+| `age` | number |  |  |
+| `motherName` | string |  |  |
+| `fatherName` | string |  |  |
+| `taxIdStatus` | string |  |  |
+| `hasObitIndication` | boolean |  |  |
+| `lastUpdateDate` | string |  |  |
+| `alternativeIdNumbers` | object |  |  |
+| `maritalStatus` | string |  |  |
+| `detailScore` | object |  |  |
+| `addresses` | array |  |  |
+| `phones` | array |  |  |
+| `emails` | array |  |  |
+| `scrAuthorized` | boolean | ✓ |  |
