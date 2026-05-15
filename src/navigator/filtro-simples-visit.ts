@@ -13,6 +13,7 @@ const FILTER_OPERATOR = 'Igual a';
 const FILTER_VALUE_CENTS = '15000000';
 
 export interface FiltroSimplesResult {
+  screenshotFiltroPreenchido: string;
   screenshotBoard: string;
   screenshotTabela: string;
   requestsNavegacao: CapturedRequest[];
@@ -131,6 +132,11 @@ export async function visitFiltroSimples(
       console.log('    Seletor de múltiplos clientes visível — mantendo "Qualquer cliente do grupo" (padrão)');
     }
 
+    // Screenshot do painel com filtro preenchido (antes de aplicar)
+    const screenshotFiltroPreenchido = 'filtro-preenchido.png';
+    await page.screenshot({ path: path.join(screenshotsDir, screenshotFiltroPreenchido) });
+    console.log('    Screenshot do painel preenchido capturada');
+
     // ====== Aplicar filtro ======
     const snapshotBeforeApply = getRequests();
     await page.getByRole('button', { name: /Aplicar filtro/i }).click();
@@ -158,6 +164,7 @@ export async function visitFiltroSimples(
     console.log(`    ${requestsVisaoTabela.length} request(s) na visão tabela`);
 
     return {
+      screenshotFiltroPreenchido,
       screenshotBoard,
       screenshotTabela,
       requestsNavegacao,

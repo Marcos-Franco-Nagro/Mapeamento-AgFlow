@@ -35,6 +35,7 @@
     "navigate:cashflow:nova-area": "tsx src/navigator/cashflow-nova-area-index.ts",
     "navigate:cashflow:cadastrar-producao": "tsx src/navigator/cashflow-cadastrar-producao-index.ts",
     "navigate:filtro:simples": "tsx src/navigator/filtro-simples-index.ts",
+    "navigate:filtro:duplo": "tsx src/navigator/filtro-duplo-index.ts",
     "enrich:swagger": "tsx src/enricher/swagger-enrich.ts",
     "typecheck": "tsc --noEmit"
   },
