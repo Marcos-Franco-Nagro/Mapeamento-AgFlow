@@ -37,6 +37,7 @@
     "navigate:filtro:simples": "tsx src/navigator/filtro-simples-index.ts",
     "navigate:filtro:duplo": "tsx src/navigator/filtro-duplo-index.ts",
     "navigate:filtro:multi-grupo": "tsx src/navigator/filtro-multi-grupo-index.ts",
+    "navigate:adicionar-colunas": "tsx src/navigator/adicionar-colunas-index.ts",
     "enrich:swagger": "tsx src/enricher/swagger-enrich.ts",
     "typecheck": "tsc --noEmit"
   },
