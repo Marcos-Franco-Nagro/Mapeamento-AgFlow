@@ -230,6 +230,7 @@ Scripts além dos 7 de fase, cobrindo módulos e ações transversais:
 | `navigate:etiquetas` | Adicionar e remover etiqueta em um card |
 | `navigate:excluir-card` | Excluir card via botão + modal de confirmação |
 | `navigate:comentario` | Adicionar comentário ao card |
+| `navigate:ficha-cadastral` | Editar ficha cadastral (dropdown Filial + salvar) |
 
 **Quirks adicionais descobertos nesta fase:**
 
@@ -239,6 +240,7 @@ Scripts além dos 7 de fase, cobrindo módulos e ações transversais:
 - **Pasta table/ (não board/):** scripts de visão tabela do board usam `vault/endpoints/table/` e `vault/screenshots/table/` — o board em si é a view kanban, table é a view tabular.
 - **Excluir card — CARD_URL descartável:** o script `navigate:excluir-card` deleta o card permanentemente. Atualizar a constante `CARD_URL` em `excluir-card-index.ts` com um card descartável antes de cada execução. Botão: `button[aria-label="Excluir card"]`; confirmação: `getByRole('button', { name: /Sim, excluir/i })`.
 - **Aba Comentários:** seletor `getByRole('tab', { name: 'Comentários' })`; textarea via `getByPlaceholder('Escreva aqui...')`; publicar via `getByRole('button', { name: 'Publicar' })`.
+- **MUI Select (Ficha cadastral):** usa `role="combobox"` (não `role="button"`). Após clicar, aguardar `ul[role="listbox"]` e clicar em `li[role="option"]`.
 
 **Script de enriquecimento:**
 ```
