@@ -59,17 +59,9 @@ Construir uma pipeline que:
 - O parâmetro `origin` na URL de pending-login é base64 do path de destino (ex: `L2hvbWU=` decodifica para `/home`). Pode ser útil para deep-link direto em rotas internas pós-login.
 - O rodapé do sidebar exibe `v2.313.0` — provavelmente versão do frontend, útil para anexar em bug reports.
 
-### Stack do frontend (ainda não identificada)
+### Stack do frontend (identificada na Fase 1)
 
-Marcos não sabe qual framework o AgFlow usa.
-
-**Tarefa para a primeira sessão do Claude Code:** ao rodar o primeiro login em modo headed, inspecionar a página via DevTools para identificar:
-- Framework (React / Angular / Vue / Svelte) via presença de `window.__REACT_DEVTOOLS_GLOBAL_HOOK__`, `window.ng`, `window.__VUE_DEVTOOLS_GLOBAL_HOOK__`, etc.
-- Padrão de roteamento (history API provavelmente, dado o formato de URLs limpas tipo `/pt/home`)
-- Disponibilidade de `data-testid` ou seletores semânticos estáveis (se não houver, o crawler precisa cair em seletores CSS estruturais, que são frágeis)
-- Versão de build / hash visível em assets
-
-Documentar descoberta em `docs/stack-analysis.md`.
+**Next.js App Router + Material-UI (MUI v5).** Cookie HTTP-only, SSE em `sse.agflow.agrisk.dev/events`. Detalhes completos em `docs/stack-analysis.md`.
 
 ## Arquitetura
 
@@ -215,6 +207,41 @@ Todos os scripts de interação das 7 fases implementados e rodados com sucesso.
 - **waitForResponse no advance:** o `advance-index.ts` usa `page.waitForResponse` para garantir a captura do PATCH antes de ler o snapshot final.
 - **Sessão expira rapidamente:** o token do AgFlow tem TTL curto. Rodar `npm run login` imediatamente antes de cada script de interação.
 
+### Fase 2+3c — Scripts de funcionalidades adicionais ✅ CONCLUÍDA (15–18/05/2026)
+
+Scripts além dos 7 de fase, cobrindo módulos e ações transversais:
+
+| Script npm | O que documenta |
+|-----------|----------------|
+| `navigate:nova-solicitacao` | Modal de nova solicitação de crédito |
+| `navigate:startform` | Formulário de start de flow |
+| `navigate:radar` | Módulo Radar (análise de crédito) |
+| `navigate:balanco:extrair` | Submodulo Balanço — extração de dados |
+| `navigate:balanco:revisar` | Submodulo Balanço — revisão de dados |
+| `navigate:documentos` | Módulo Documentos (visualizar/gerenciar) |
+| `navigate:criar-documento` | Criar documento a partir de template |
+| `navigate:motor-credito` | Motor de crédito (políticas e aprovação) |
+| `navigate:cashflow:nova-area` | Submodulo Cash Flow — nova área rural |
+| `navigate:cashflow:cadastrar-producao` | Submodulo Cash Flow — cadastrar produção |
+| `navigate:filtro:simples` | Filtro com 1 condição no board |
+| `navigate:filtro:duplo` | Filtro com 2 condições no board |
+| `navigate:filtro:multi-grupo` | Filtro com 2 grupos (operador OU) |
+| `navigate:adicionar-colunas` | Adicionar colunas na visão tabela do board |
+| `navigate:etiquetas` | Adicionar e remover etiqueta em um card |
+
+**Quirks adicionais descobertos nesta fase:**
+
+- **MUI Chips sem role="button":** chips de etiqueta são `div.MuiChip-root` sem role — `getByRole('button')` não os encontra. Usar `[data-testid="addButton"][data-is-current="false/true"]` para chips disponíveis/aplicados.
+- **Botão etiqueta:** `button[aria-label="Etiquetas"]` no header do card.
+- **Popup de etiqueta é MuiMenu-root (Modal):** tem backdrop invisível que intercepta cliques fora do popup. Não tentar clicar em elementos da página enquanto o popup está aberto.
+- **Pasta table/ (não board/):** scripts de visão tabela do board usam `vault/endpoints/table/` e `vault/screenshots/table/` — o board em si é a view kanban, table é a view tabular.
+
+**Script de enriquecimento:**
+```
+npm run enrich:swagger
+```
+Baixa a spec do Swagger de `api.agflow.agrisk.dev` e adiciona seção `## Swagger` nos arquivos `.md` de endpoints que batem com a spec. Rodar após cada novo script de navegação.
+
 ### Fase 4 — Integração Obsidian + MCP ⏳ PRÓXIMA
 - Abrir `./vault` no Obsidian, verificar grafo e navegação
 - Configurar `mcp-obsidian` no cliente Claude:
@@ -230,21 +257,9 @@ Todos os scripts de interação das 7 fases implementados e rodados com sucesso.
   ```
 - Teste end-to-end: abrir Claude Desktop, perguntar "Me gere um bug report para a tela de Solicitações de Crédito" → Claude usa MCP para ler a nota e retornar template preenchido
 
-### Fase 5 — Scripts de interação por módulo ⏳ PLANEJADA
-Decisão de 27/04/2026: scripts de interação servem duplo propósito — documentam endpoints de ações interativas (upload, submit de formulário, botões condicionais) E são a base para automação de testes futura.
-
-Por módulo, criar `src/scripts/<slug-modulo>.ts` que:
-- Navega até o módulo com storageState
-- Executa a interação (preenche campos, faz upload, clica em submeter)
-- Captura todos os endpoints chamados durante a interação
-- Tira screenshots de cada estado intermediário
-- Gera complemento da nota do vault: seção "Fluxo de interação" com endpoints e screenshots
-
-Isso transforma os scripts em testes Playwright reutilizáveis com mínima adaptação.
-
-### Fase 6 — Manutenção
-- `npm run crawl` executável manualmente quando Marcos quiser refresh
-- `npm run crawl` pode ser re-apontado para outros flows editando `CRAWL_START_URL` e `CRAWL_SCOPE` no `.env`
+### Fase 5 — Manutenção contínua
+- `npm run crawl` executável manualmente quando Marcos quiser refresh do vault
+- `npm run enrich:swagger` após cada novo script para enriquecer endpoints com dados do Swagger
 - (Opcional futuro) GitHub Action semanal que roda o crawler e abre PR com diffs do vault
 
 ## Convenções
@@ -292,24 +307,13 @@ const snapshotC = all2.slice(snapshotA.length + snapshotB.length); // endpoints 
 
 **Por quê:** a separação permite identificar exatamente qual endpoint é acionado por qual interação do usuário, tornando o vault útil para debug, documentação de API e geração de bug reports precisos. Scripts que misturarem endpoints de ações distintas em uma única pasta devem ser considerados incompletos.
 
-## Decisões pendentes (resolver na primeira sessão Claude Code com Marcos)
-
-1. **Credenciais do crawler:** usar conta pessoal do Marcos ou solicitar ao time uma conta de QA dedicada? Recomendação: conta dedicada, para não poluir o histórico real dele e para poder rotacionar sem impacto.
-2. **Ambientes-alvo:** só `agrisk.dev`, ou também `staging`/`prod`? Prod em geral é risco — começar só com dev.
-3. **Concorrência:** crawl serial ou paralelo? Recomendação: **serial no MVP** (mais simples, mais amigável ao backend de dev).
-4. **Modais e abas:** considerar cada modal/aba como sub-rota? MVP trata como parte da rota pai; futuro pode granularizar.
-5. **Rate limiting:** adicionar delay entre rotas (ex: 500ms) para não sobrecarregar dev?
-
-## Primeiros passos ao abrir Claude Code neste diretório
-
-Execute na ordem:
+## Ao abrir uma nova sessão Claude Code neste diretório
 
 1. Ler `CLAUDE.md` inteiro (este arquivo)
-2. Perguntar ao Marcos as 5 decisões pendentes acima
-3. Executar **Fase 0** (setup) — criar arquivos de config, instalar deps
-4. Executar **Fase 1** (login interativo) — Marcos precisa estar presente para digitar credenciais; aproveitar a sessão headed para descoberta de stack
-5. Após login bem-sucedido, preencher `docs/stack-analysis.md` com tudo descoberto
-6. Seguir roadmap: Fase 2 → 3 → 4
+2. Rodar `npm run login` — sessão expira rápido, sempre renovar antes de qualquer script
+3. Conferir qual script ou funcionalidade será trabalhada e criar branch com data no nome (ex: `18/05/2026-nome-feature`)
+4. Após rodar um novo script, executar `npm run enrich:swagger`
+5. Commitar + abrir PR
 
 ## Objetivo de interação desejado (quando tudo estiver pronto)
 
