@@ -39,6 +39,8 @@
     "navigate:filtro:multi-grupo": "tsx src/navigator/filtro-multi-grupo-index.ts",
     "navigate:adicionar-colunas": "tsx src/navigator/adicionar-colunas-index.ts",
     "navigate:etiquetas": "tsx src/navigator/etiquetas-index.ts",
+    "navigate:excluir-card": "tsx src/navigator/excluir-card-index.ts",
+    "navigate:comentario": "tsx src/navigator/comentario-index.ts",
     "enrich:swagger": "tsx src/enricher/swagger-enrich.ts",
     "typecheck": "tsc --noEmit"
   },
