@@ -229,6 +229,7 @@ Scripts além dos 7 de fase, cobrindo módulos e ações transversais:
 | `navigate:adicionar-colunas` | Adicionar colunas na visão tabela do board |
 | `navigate:etiquetas` | Adicionar e remover etiqueta em um card |
 | `navigate:excluir-card` | Excluir card via botão + modal de confirmação |
+| `navigate:comentario` | Adicionar comentário ao card |
 
 **Quirks adicionais descobertos nesta fase:**
 
@@ -237,6 +238,7 @@ Scripts além dos 7 de fase, cobrindo módulos e ações transversais:
 - **Popup de etiqueta é MuiMenu-root (Modal):** tem backdrop invisível que intercepta cliques fora do popup. Não tentar clicar em elementos da página enquanto o popup está aberto.
 - **Pasta table/ (não board/):** scripts de visão tabela do board usam `vault/endpoints/table/` e `vault/screenshots/table/` — o board em si é a view kanban, table é a view tabular.
 - **Excluir card — CARD_URL descartável:** o script `navigate:excluir-card` deleta o card permanentemente. Atualizar a constante `CARD_URL` em `excluir-card-index.ts` com um card descartável antes de cada execução. Botão: `button[aria-label="Excluir card"]`; confirmação: `getByRole('button', { name: /Sim, excluir/i })`.
+- **Aba Comentários:** seletor `getByRole('tab', { name: 'Comentários' })`; textarea via `getByPlaceholder('Escreva aqui...')`; publicar via `getByRole('button', { name: 'Publicar' })`.
 
 **Script de enriquecimento:**
 ```
@@ -316,8 +318,6 @@ const snapshotC = all2.slice(snapshotA.length + snapshotB.length); // endpoints 
 3. Conferir qual script ou funcionalidade será trabalhada e criar branch com data no nome (ex: `18/05/2026-nome-feature`)
 4. Após rodar um novo script, executar `npm run enrich:swagger`
 5. Commitar + abrir PR
-5. Após login bem-sucedido, preencher `docs/stack-analysis.md` com tudo descoberto
-6. Seguir roadmap: Fase 2 → 3 → 4
 
 ## Objetivo de interação desejado (quando tudo estiver pronto)
 
