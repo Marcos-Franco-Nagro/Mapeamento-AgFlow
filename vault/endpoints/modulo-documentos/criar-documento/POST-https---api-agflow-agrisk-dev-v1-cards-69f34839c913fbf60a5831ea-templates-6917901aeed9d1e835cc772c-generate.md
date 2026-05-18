@@ -10,3 +10,29 @@ tags: [endpoint, agflow, documentos, criar-documento]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `CardController_generateDocument`
+
+**Resumo:** Criar documento
+
+**Descrição:** Rota responsável pela criação de um documento utilizando o template.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `cardId` | path | string | ✓ |  |
+| `templateId` | path | string | ✓ |  |
+
+### Request Body
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|----------|
+| `fileName` | string | ✓ |  |
+| `fields` | object | ✓ |  |
+
+### Response — Generate document
+

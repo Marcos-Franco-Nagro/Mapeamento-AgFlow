@@ -10,3 +10,15 @@ tags: [endpoint, agflow, cash-flow, cadastrar-producao]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `CashFlowController_listCashFlowCultures`
+
+**Resumo:** Listar culturas
+
+**Descrição:** Rota responsável pela listagem das culturas.
+
+### Response
+

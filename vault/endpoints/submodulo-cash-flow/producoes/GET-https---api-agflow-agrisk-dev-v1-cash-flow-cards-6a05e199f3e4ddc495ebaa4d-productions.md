@@ -10,3 +10,21 @@ tags: [endpoint, agflow, cash-flow, cadastrar-producao]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `CashFlowController_listProductions`
+
+**Resumo:** Listar produções
+
+**Descrição:** Rota responsável pela listagem das produções.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `cardId` | path | string | ✓ |  |
+
+### Response
+

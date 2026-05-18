@@ -10,3 +10,22 @@ tags: [endpoint, agflow, motor-credito]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `CardController_findApproval`
+
+**Resumo:** Visualizar alçada na ação de fase
+
+**Descrição:** Rota responsável pela visualização da alçada.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `cardId` | path | string | ✓ |  |
+| `phaseId` | path | string | ✓ |  |
+
+### Response — List Approval
+

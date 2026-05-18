@@ -10,3 +10,23 @@ tags: [endpoint, agflow, motor-credito]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `CardController_findCreditEngine`
+
+**Resumo:** Visualizar motor de decisão
+
+**Descrição:** Rota responsável pela visualização do motor de decisão.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `cardId` | path | string | ✓ |  |
+| `clientId` | path | string | ✓ |  |
+| `policyId` | path | string | ✓ |  |
+
+### Response — Find Credit Engine
+

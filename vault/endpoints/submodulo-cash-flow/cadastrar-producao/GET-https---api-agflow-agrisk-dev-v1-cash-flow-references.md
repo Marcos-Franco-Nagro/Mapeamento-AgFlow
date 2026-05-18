@@ -10,3 +10,15 @@ tags: [endpoint, agflow, cash-flow, cadastrar-producao]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `CashFlowController_listReferences`
+
+**Resumo:** Listar referências
+
+**Descrição:** Rota responsável pela listagem das referências.
+
+### Response
+

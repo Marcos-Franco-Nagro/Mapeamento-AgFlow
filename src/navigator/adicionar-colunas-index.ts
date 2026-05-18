@@ -30,7 +30,7 @@ async function checkSession(): Promise<boolean> {
 }
 
 async function saveEndpoints(requests: CapturedRequest[], folder: string): Promise<void> {
-  const dir = path.join('vault', 'endpoints', 'board', 'adicionar-colunas', folder);
+  const dir = path.join('vault', 'endpoints', 'table', 'adicionar-colunas', folder);
   await fs.mkdir(dir, { recursive: true });
   for (const req of requests) {
     try {
@@ -39,7 +39,7 @@ async function saveEndpoints(requests: CapturedRequest[], folder: string): Promi
       try { await fs.access(file); continue; } catch { /* não existe, criar */ }
       await fs.writeFile(
         file,
-        `---\nmethod: ${req.method}\nurl: "${req.url}"\nstatus: ${req.status ?? 'unknown'}\ntags: [endpoint, agflow, board, adicionar-colunas, ${folder}]\n---\n\n# ${req.method} ${req.url}\n\n## Observações\n\n-\n`,
+        `---\nmethod: ${req.method}\nurl: "${req.url}"\nstatus: ${req.status ?? 'unknown'}\ntags: [endpoint, agflow, table, adicionar-colunas, ${folder}]\n---\n\n# ${req.method} ${req.url}\n\n## Observações\n\n-\n`,
         'utf-8',
       );
     } catch { /* ignorar */ }
@@ -67,8 +67,8 @@ async function main(): Promise<void> {
     await saveEndpoints(result.requestsAdicionarColunas, 'adicionar-colunas');
 
     console.log('\n✅ Concluído.');
-    console.log(`   Screenshots: vault/screenshots/board/adicionar-colunas/`);
-    console.log(`   Endpoints:   vault/endpoints/board/adicionar-colunas/`);
+    console.log(`   Screenshots: vault/screenshots/table/adicionar-colunas/`);
+    console.log(`   Endpoints:   vault/endpoints/table/adicionar-colunas/`);
     console.log(`     navegacao:          ${result.requestsNavegacao.length} request(s)`);
     console.log(`     visao-tabela:       ${result.requestsVisaoTabela.length} request(s)`);
     console.log(`     adicionar-colunas:  ${result.requestsAdicionarColunas.length} request(s)`);

@@ -10,3 +10,21 @@ tags: [endpoint, agflow, cash-flow, nova-area]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `CashFlowController_listProperties`
+
+**Resumo:** Listar áreas
+
+**Descrição:** Rota responsável pela listagem das áreas.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `cardId` | path | string | ✓ |  |
+
+### Response
+

@@ -39,7 +39,7 @@ export async function visitAdicionarColunas(
   page.on('pageerror', err => console.log(`[pageerror] ${err.message}`));
   const getRequests = setupNetworkCapture(page);
 
-  const screenshotsDir = path.join('vault', 'screenshots', 'board', 'adicionar-colunas');
+  const screenshotsDir = path.join('vault', 'screenshots', 'table', 'adicionar-colunas');
   const boardUrl = `${baseUrl}/${locale}/flow/${flowId}/board`;
 
   try {

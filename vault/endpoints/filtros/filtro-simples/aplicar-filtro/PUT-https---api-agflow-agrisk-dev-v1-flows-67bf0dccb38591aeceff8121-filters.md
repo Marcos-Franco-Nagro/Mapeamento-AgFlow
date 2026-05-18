@@ -10,3 +10,24 @@ tags: [endpoint, agflow, filtros, filtro-simples, aplicar-filtro]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `FlowController_updateUserFilter`
+
+**Resumo:** Atualizar filtro de cards por usuário
+
+**Descrição:** Rota responsável por atualizar os filtros de cards por usuário.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `id` | path | string | ✓ |  |
+
+### Request Body
+
+
+### Response
+
