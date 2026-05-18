@@ -10,3 +10,28 @@ tags: [endpoint, agflow, cash-flow, nova-area]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `CashFlowController_createProperties`
+
+**Resumo:** Cadastrar área
+
+**Descrição:** Rota responsável pelo cadastro de uma área.
+
+### Request Body
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|----------|
+| `cardId` | string | ✓ |  |
+| `flowId` | string | ✓ |  |
+| `clientId` | string | ✓ |  |
+| `name` | string | ✓ |  |
+| `totalArea` | number | ✓ |  |
+| `state` | string | ✓ |  |
+| `city` | string | ✓ |  |
+| `type` | string | ✓ |  |
+
+### Response
+

@@ -10,3 +10,23 @@ tags: [endpoint, agflow, motor-credito]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `CardController_executeCreditEngine`
+
+**Resumo:** Executar motor de decisão
+
+**Descrição:** Rota responsável pela execução do motor de decisão.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `cardId` | path | string | ✓ |  |
+| `policyId` | path | string | ✓ |  |
+| `clientId` | path | string | ✓ |  |
+
+### Response — Execute Credite Engine by clientId
+

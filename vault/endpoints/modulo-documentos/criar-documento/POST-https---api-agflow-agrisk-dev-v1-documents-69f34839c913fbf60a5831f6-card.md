@@ -10,3 +10,28 @@ tags: [endpoint, agflow, documentos, criar-documento]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `DocumentController_addingFilesToCard`
+
+**Resumo:** Adicionar documento na oportunidade
+
+**Descrição:** Rota responsável pela adição de um documento em uma oportunidade.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `documentId` | path | string | ✓ |  |
+
+### Request Body
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|----------|
+| `files` | array | ✓ |  |
+| `tagName` | string | ✓ |  |
+
+### Response
+

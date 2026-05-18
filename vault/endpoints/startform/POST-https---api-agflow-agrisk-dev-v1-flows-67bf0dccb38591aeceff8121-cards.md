@@ -10,3 +10,27 @@ tags: [endpoint, agflow, startform]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `FlowController_createCard`
+
+**Resumo:** Cadastrar oportunidade
+
+**Descrição:** Rota responsável pelo cadastro de uma oportunidade.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `id` | path | string | ✓ |  |
+
+### Request Body
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|----------|
+| `fields` | array | ✓ |  |
+
+### Response
+

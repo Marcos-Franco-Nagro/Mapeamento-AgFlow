@@ -10,3 +10,22 @@ tags: [endpoint, agflow, documentos, criar-documento]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `CardController_findTemplateFieldsValues`
+
+**Resumo:** Visualizar campos (preenchidos) do template
+
+**Descrição:** Rota responsável pela visualização de um template com os campos preenchidos.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `cardId` | path | string | ✓ |  |
+| `templateId` | path | string | ✓ |  |
+
+### Response — Find template fields values
+

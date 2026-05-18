@@ -10,3 +10,28 @@ tags: [endpoint, agflow, documentos]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `DocumentController_addFilesToClient`
+
+**Resumo:** Adicionar documento no cliente
+
+**Descrição:** Rota responsável pela adição de um documento em um cliente.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `documentId` | path | string | ✓ |  |
+
+### Request Body
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|----------|
+| `files` | array | ✓ |  |
+| `tagName` | string | ✓ |  |
+
+### Response
+

@@ -10,3 +10,22 @@ tags: [endpoint, agflow, documentos, criar-documento]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `DocumentController_findAllCreatedCardDocument`
+
+**Resumo:** Listar documentos criados
+
+**Descrição:** Rota responsável pela listagem dos documentos criados em uma oportunidade.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `cardId` | path | string | ✓ |  |
+| `fileName` | query | string | ✓ |  |
+
+### Response
+

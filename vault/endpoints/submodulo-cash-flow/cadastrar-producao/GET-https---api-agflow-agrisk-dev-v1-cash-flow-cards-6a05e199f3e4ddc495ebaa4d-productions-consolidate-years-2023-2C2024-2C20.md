@@ -10,3 +10,23 @@ tags: [endpoint, agflow, cash-flow, cadastrar-producao]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `CashFlowController_consolidateProduction`
+
+**Resumo:** Visualizar produções (consolidada)
+
+**Descrição:** Rota responsável pela visualização (consolidada) das produções.
+
+### Parâmetros
+
+| Nome | Local | Tipo | Obrigatório | Descrição |
+|------|-------|------|-------------|-----------|
+| `cardId` | path | string | ✓ |  |
+| `cultures` | query | array | ✓ |  |
+| `years` | query | array | ✓ |  |
+
+### Response
+

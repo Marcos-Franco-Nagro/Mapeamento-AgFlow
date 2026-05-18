@@ -10,3 +10,18 @@ tags: [endpoint, agflow, filtros, filtro-simples, navegacao]
 ## Observações
 
 -
+---
+
+## Swagger
+
+**Operação:** `AgRiskController_listNotifications`
+
+**Resumo:** Listar notificações
+
+**Descrição:** Rota responsável pela listagem das notificações de instabilidade do AgRisk.
+
+### Response — Notificações
+
+| Campo | Tipo | Obrigatório | Descrição |
+|-------|------|-------------|----------|
+| `items` | array | ✓ | Lista de notificações |
