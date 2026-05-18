@@ -53,7 +53,29 @@
       "PowerShell(Get-ChildItem \"C:\\\\Users\\\\MarcosFrancoOliveira\\\\.claude\" -Force | ForEach-Object { \"$\\($_.Name\\) [$\\($_.LastWriteTime\\)]\" })",
       "Bash(du -sh vault/screenshots/)",
       "Bash(powershell -Command \"\\(Get-ChildItem 'vault/screenshots' -Recurse -Filter '*.png' | Measure-Object -Property Length -Sum\\).Sum / 1MB\")",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git checkout *)",
+      "Bash(git pull *)",
+      "Bash(npx tsx --eval ' *)",
+      "Bash(npx tsx *)",
+      "Bash(npx tsx -e ' *)",
+      "Bash(del \"src\\\\navigator\\\\open-board.ts\")",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(gh pr create --title 'feat: filtro simples — Limite aprovado pelo analista' --body ' *)",
+      "Bash(gh auth *)",
+      "Bash(gh pr create --title 'feat: filtro duplo — duas condições no mesmo grupo' --body ' *)",
+      "Bash(powershell *)",
+      "Bash(gh pr create --title 'feat: filtro multi-grupo — dois grupos de condições com operador OU' --body ' *)",
+      "PowerShell(Get-ChildItem -Recurse \"C:\\\\Users\\\\MarcosFrancoOliveira\\\\OneDrive - NAGRO CREDITO AGRO\\\\Área de Trabalho\\\\Projetos Claude\\\\agflow-qa-mapper\\\\vault\\\\endpoints\\\\board\\\\adicionar-colunas\" | Where-Object { -not $_.PSIsContainer } | Select-Object DirectoryName, Name)",
+      "Bash(gh pr create --title 'feat: adicionar colunas — Valor da proposta + Status do parecer' --body ' *)",
+      "Bash(ls src/scripts/)",
+      "Bash(dir src\\\\scripts)",
+      "Bash(gh pr *)",
+      "Bash(Remove-Item -Recurse -Force \"vault/endpoints/card\" -ErrorAction SilentlyContinue)",
+      "Bash(Remove-Item -Recurse -Force \"vault/screenshots/card\" -ErrorAction SilentlyContinue)",
+      "Bash(git fetch *)",
+      "Bash(git stash *)"
     ]
   }
 }
