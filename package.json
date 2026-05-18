@@ -41,6 +41,7 @@
     "navigate:etiquetas": "tsx src/navigator/etiquetas-index.ts",
     "navigate:excluir-card": "tsx src/navigator/excluir-card-index.ts",
     "navigate:comentario": "tsx src/navigator/comentario-index.ts",
+    "navigate:ficha-cadastral": "tsx src/navigator/ficha-cadastral-index.ts",
     "enrich:swagger": "tsx src/enricher/swagger-enrich.ts",
     "typecheck": "tsc --noEmit"
   },
