@@ -1,11 +1,10 @@
 import 'dotenv/config';
 import { chromium } from 'playwright';
 import path from 'path';
-import fs from 'fs/promises';
 import { fileURLToPath } from 'url';
 import { visitFichaCadastral } from './ficha-cadastral-visit.js';
 import { AuthExpiredError } from '../crawler/visit.js';
-import type { CapturedRequest } from '../crawler/extractors/network.js';
+import { saveEndpoints, saveNavegacaoEndpoints } from './save-endpoints.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const STATE_PATH = path.join(__dirname, '../../auth/storageState.json');
@@ -28,23 +27,6 @@ async function checkSession(): Promise<boolean> {
   }
 }
 
-async function saveEndpoints(requests: CapturedRequest[], folder: string): Promise<void> {
-  const dir = path.join('vault', 'endpoints', 'ficha-cadastral', folder);
-  await fs.mkdir(dir, { recursive: true });
-  for (const req of requests) {
-    try {
-      const slug = `${req.method}-${req.url.replace(/[^a-z0-9]/gi, '-').slice(0, 120)}`;
-      const file = path.join(dir, `${slug}.md`);
-      try { await fs.access(file); continue; } catch { /* não existe, criar */ }
-      await fs.writeFile(
-        file,
-        `---\nmethod: ${req.method}\nurl: "${req.url}"\nstatus: ${req.status ?? 'unknown'}\ntags: [endpoint, agflow, card, ficha-cadastral, ${folder}]\n---\n\n# ${req.method} ${req.url}\n\n## Observações\n\n-\n`,
-        'utf-8',
-      );
-    } catch { /* ignorar */ }
-  }
-}
-
 async function main(): Promise<void> {
   console.log('Verificando sessão...');
   if (!(await checkSession())) {
@@ -62,13 +44,24 @@ async function main(): Promise<void> {
 
     const result = await visitFichaCadastral(context, FICHA_URL);
 
-    await saveEndpoints(result.requestsNavegacao, 'navegacao');
-    await saveEndpoints(result.requestsSalvar, 'editar');
+    const tags = ['endpoint', 'agflow', 'card', 'ficha-cadastral'];
+
+    const navResult = await saveNavegacaoEndpoints(
+      result.requestsNavegacao,
+      path.join('vault', 'endpoints', 'ficha-cadastral', 'navegacao'),
+      [...tags, 'navegacao'],
+    );
+
+    await saveEndpoints(
+      result.requestsSalvar,
+      path.join('vault', 'endpoints', 'ficha-cadastral', 'editar'),
+      [...tags, 'editar'],
+    );
 
     console.log('\n✅ Concluído.');
     console.log(`   Screenshots: vault/screenshots/ficha-cadastral/`);
     console.log(`   Endpoints:   vault/endpoints/ficha-cadastral/`);
-    console.log(`     navegacao: ${result.requestsNavegacao.length} request(s)`);
+    console.log(`     navegacao: ${navResult.saved} novo(s), ${navResult.skipped} já capturado(s) em outros scripts`);
     console.log(`     editar:    ${result.requestsSalvar.length} request(s)`);
   } catch (err) {
     if (err instanceof AuthExpiredError) {
